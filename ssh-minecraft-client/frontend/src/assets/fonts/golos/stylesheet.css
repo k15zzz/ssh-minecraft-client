@@ -1,0 +1,47 @@
+@font-face {
+    font-family: 'Golos Text';
+    src: url('./Medium.eot');
+    src: local('Golos Text Medium'), local('Medium'),
+        url('./Medium.eot?#iefix') format('embedded-opentype'),
+        url('./Medium.woff2') format('woff2'),
+        url('./Medium.woff') format('woff'),
+        url('./Medium.ttf') format('truetype');
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Golos Text';
+    src: url('./DemiBold.eot');
+    src: local('Golos Text DemiBold'), local('DemiBold'),
+        url('./DemiBold.eot?#iefix') format('embedded-opentype'),
+        url('./DemiBold.woff2') format('woff2'),
+        url('./DemiBold.woff') format('woff'),
+        url('./DemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Golos Text';
+    src: url('./Bold.eot');
+    src: local('Golos Text Bold'), local('Bold'),
+        url('./Bold.eot?#iefix') format('embedded-opentype'),
+        url('./Bold.woff2') format('woff2'),
+        url('./Bold.woff') format('woff'),
+        url('./Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Golos Text';
+    src: url('./Regular.eot');
+    src: local('Golos Text Regular'), local('Regular'),
+        url('./Regular.eot?#iefix') format('embedded-opentype'),
+        url('./Regular.woff2') format('woff2'),
+        url('./Regular.woff') format('woff'),
+        url('./Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}

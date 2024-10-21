@@ -1,0 +1,80 @@
+/* Основной контейнер с неоновой обводкой */
+.neon-container {
+    margin: 20px 0;
+    position: relative;
+    padding: 20px;
+    display: inline-block;
+    border-radius: 10px;
+    background: rgba(95, 158, 160, 0);
+    border: 2px solid #7d7d7d; /* Стартовый серый цвет обводки */
+    transition: border-color 0.5s ease, box-shadow 0.5s ease;
+    box-shadow: 0 0 15px #7d7d7d, 0 0 30px #7d7d7d, 0 0 45px #7d7d7d;
+    overflow: visible;
+}
+
+.neon-container.active {
+    border-color: #04B86C;
+    box-shadow: 0 0 15px #04B86C, 0 0 30px #04B86C, 0 0 60px #04B86C;
+    overflow: visible;
+}
+
+/* Внутренний элемент для анимации бегущего луча */
+.neon-glow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+    pointer-events: none;
+    z-index: 1;
+    border: 2px solid transparent;
+    background: none;
+    animation: animateGlow 3s linear infinite;
+}
+
+.neon-container.active .neon-glow {
+    box-shadow: 0 0 10px rgba(4, 184, 108, 0.6); /* Бегущий луч при статусе true */
+}
+
+/* Анимация бегущего луча */
+@keyframes animateGlow {
+    0% {
+        border-top-color: rgba(255, 255, 255, 0.6);
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+    }
+    25% {
+        border-top-color: rgba(255, 255, 255, 0.6);
+        border-right-color: rgba(255, 255, 255, 0.6);
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+    }
+    50% {
+        border-top-color: transparent;
+        border-right-color: rgba(255, 255, 255, 0.6);
+        border-bottom-color: rgba(255, 255, 255, 0.6);
+        border-left-color: transparent;
+    }
+    75% {
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: rgba(255, 255, 255, 0.6);
+        border-left-color: rgba(255, 255, 255, 0.6);
+    }
+    100% {
+        border-top-color: rgba(255, 255, 255, 0.6);
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+    }
+}
+
+/* Контент внутри контейнера */
+.content {
+    position: relative;
+    z-index: 2;
+    color: white;
+}

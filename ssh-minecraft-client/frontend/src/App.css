@@ -1,0 +1,36 @@
+#App {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+    gap: 15px;
+    padding-top: 50px;
+}
+
+#logo {
+    display: block;
+    width: 30%;
+    height: 30%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-origin: content-box;
+}
+
+.header .header__top-text {
+    color: #AFB1B5;
+    font-size: 0.8rem;
+}
+
+.header .header__text {
+    color: #ffffff;
+    font-size: 2rem;
+}
+
+.header .header__sub-text {
+    color: #AFB1B5;
+    font-size: 0.6rem;
+    margin-top: 12px;
+}

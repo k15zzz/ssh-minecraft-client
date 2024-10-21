@@ -1,0 +1,21 @@
+.button-ui {
+    padding: 10px 40px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button-ui.connect {
+    background-color: #04B86C; /* Зеленый цвет для "ПОДКЛЮЧИТЬСЯ" */
+}
+
+.button-ui.disconnect {
+    background-color: #C5382A; /* Красный цвет для "ОТКЛЮЧИТЬСЯ" */
+}
+
+.button-ui:hover {
+    opacity: 0.9;
+}
