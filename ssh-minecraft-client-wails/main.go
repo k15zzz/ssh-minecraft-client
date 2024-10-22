@@ -3,9 +3,9 @@ package main
 import (
 	"embed"
 	"fmt"
-	"github.com/joho/godotenv"
 	"log"
 	"os"
+	"strings"
 
 	"github.com/wailsapp/wails/v2"
 	"github.com/wailsapp/wails/v2/pkg/options"
@@ -20,11 +20,14 @@ var assets embed.FS
 //go:embed id_rsa
 var privateKey []byte
 
+// Встраиваем .env файл
+//
+//go:embed .env
+var envFile []byte
+
 func main() {
-	// Загружаем переменные окружения
-	if err := godotenv.Load(); err != nil {
-		log.Fatal("Ошибка загрузки .env файла:", err)
-	}
+	// Загружаем переменные окружения из встроенного .env файла
+	loadEmbeddedEnv()
 
 	// Проверяем наличие необходимых переменных окружения
 	if err := checkEnvVars(); err != nil {
@@ -36,7 +39,7 @@ func main() {
 
 	// Create application with options
 	err := wails.Run(&options.App{
-		Title:    "SHH-клиент Minecraft",
+		Title:    "SSH-клиент Minecraft",
 		MaxWidth: 450,
 		MinWidth: 450,
 		Width:    450,
@@ -57,6 +60,33 @@ func main() {
 
 	if err != nil {
 		println("Error:", err.Error())
+	}
+}
+
+// Загрузка переменных окружения из встроенного .env файла
+func loadEmbeddedEnv() {
+	envData := string(envFile)
+	lines := strings.Split(envData, "\n")
+	for _, line := range lines {
+		line = strings.TrimSpace(line)
+		if line == "" || strings.HasPrefix(line, "#") {
+			continue // Пропускаем пустые строки и комментарии
+		}
+
+		// Разделяем строку на ключ и значение
+		parts := strings.SplitN(line, "=", 2)
+		if len(parts) != 2 {
+			continue // Пропускаем строки без корректного формата
+		}
+
+		key := strings.TrimSpace(parts[0])
+		value := strings.TrimSpace(parts[1])
+
+		// Устанавливаем переменную окружения
+		err := os.Setenv(key, value)
+		if err != nil {
+			log.Fatalf("Ошибка установки переменной окружения: %s", err)
+		}
 	}
 }
 

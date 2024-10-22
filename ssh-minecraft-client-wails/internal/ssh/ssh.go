@@ -34,7 +34,7 @@ func ConnectSSH(privateKey []byte, actx context.Context) error {
 	sshCmd = exec.Command("ssh", "-i", keyFile.Name(), "-N", "-L",
 		fmt.Sprintf("%s:localhost:%s", localPort, localPort),
 		fmt.Sprintf("%s@%s", serverUser, serverHost), "-p", serverPort,
-		"-o", "BatchMode=yes", "-o", "ExitOnForwardFailure=yes")
+		"-o", "BatchMode=yes", "-o", "ExitOnForwardFailure=yes", "-o", "StrictHostKeyChecking=no")
 
 	if err := sshCmd.Start(); err != nil {
 		return fmt.Errorf("не удалось запустить команду SSH: %v", err)
